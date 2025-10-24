@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases de Skate - San Felipe | Under Board</title>
+    <meta name="description" content="Clases de skate en San Felipe. Aprende skateboarding en un ambiente seguro y divertido.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-negro: #0a0a0a;
+            --color-blanco: #F2F2F2;
+            --color-cafe: #8B4513;
+            --color-cafe-crema: #E3C9A5;
+            --color-gris: #1A1A1A;
+            --color-gris-claro: #2A2A2A;
+            --color-rojo-grafiti: #FF2A2A;
+            --color-azul-grafiti: #2A6AFF;
+            --borde: 1px solid #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        body {
+            background-color: var(--color-negro);
+            color: var(--color-blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header minimalista - Actualizado para coincidir con index.html */
+        header {
+            background-color: var(--color-negro);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: var(--borde);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo actualizado para coincidir con index.html */
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.2rem;
+            color: var(--color-blanco);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            border-radius: 8px;
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.8),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -1px 0 rgba(0,0,0,0.5);
+            border: 2px solid #333;
+            text-shadow: 
+                2px 2px 0 #000,
+                4px 4px 0 rgba(139, 69, 19, 0.3),
+                -1px -1px 0 rgba(0,0,0,0.8);
+            transform: skew(-3deg);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: linear-gradient(45deg, transparent 30%, rgba(227, 201, 165, 0.1) 50%, transparent 70%);
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,42,42,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(42,106,255,0.1) 0%, transparent 50%);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .logo:hover {
+            transform: skew(-3deg) translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.9),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                inset 0 -1px 0 rgba(0,0,0,0.6);
+            text-shadow: 
+                2px 2px 0 #000,
+                4px 4px 0 rgba(139, 69, 19, 0.4),
+                6px 6px 2px rgba(0,0,0,0.5),
+                -1px -1px 0 rgba(0,0,0,0.8);
+        }
+
+        .logo span {
+            color: var(--color-cafe-crema);
+            position: relative;
+            display: inline-block;
+            transform: skew(3deg);
+        }
+
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-cafe-crema), transparent);
+            opacity: 0.7;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-cafe-crema);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .tienda-btn {
+            background: var(--color-cafe-crema);
+            color: var(--color-negro);
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tienda-btn:hover {
+            background: var(--color-blanco);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--color-blanco);
+            background: none;
+            border: none;
+        }
+
+        /* Hero section con estética underground */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--color-negro) 100%), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0a0a"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%231A1A1A" stroke-width="1" /></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            line-height: 1.1;
+            text-shadow: 
+                3px 3px 0 #000,
+                6px 6px 0 rgba(139, 69, 19, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            color: #ccc;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--color-blanco);
+            padding: 1.2rem 2.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--color-cafe-crema);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--color-cafe-crema);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--color-negro);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 1.2rem 2.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+            margin: 0 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid #25D366;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 8rem 1rem;
+            background-color: var(--color-gris);
+            border-top: var(--borde);
+            border-bottom: var(--borde);
+        }
+
+        .benefits-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+            font-size: 3rem;
+            color: var(--color-blanco);
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--color-cafe-crema);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-card {
+            background-color: var(--color-gris);
+            transition: transform 0.4s ease;
+            border: var(--borde);
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            height: 100px;
+            background: var(--color-gris-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-cafe-crema);
+            font-size: 3.5rem;
+            position: relative;
+        }
+
+        .benefit-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .benefit-info h3 {
+            margin-bottom: 1rem;
+            color: var(--color-blanco);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .benefit-info p {
+            margin-bottom: 2rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Classes Section */
+        .classes {
+            padding: 8rem 1rem;
+            background-color: var(--color-negro);
+        }
+
+        .classes-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .class-card {
+            background-color: var(--color-gris);
+            transition: transform 0.4s ease;
+            border: var(--borde);
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .class-img {
+            height: 300px;
+            background: var(--color-gris-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .class-card:hover .class-img img {
+            transform: scale(1.05);
+        }
+
+        .class-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.1), rgba(227, 201, 165, 0.1));
+            z-index: 1;
+        }
+
+        .class-info {
+            padding: 2rem;
+        }
+
+        .class-info h3 {
+            margin-bottom: 1rem;
+            color: var(--color-blanco);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .class-info p {
+            margin-bottom: 2rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Registration Section */
+        .registration {
+            padding: 8rem 1rem;
+            background-color: var(--color-gris);
+            border-top: var(--borde);
+        }
+
+        .registration-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-gris);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: var(--borde);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-blanco);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-family: 'Archivo', sans-serif;
+            background-color: var(--color-gris-claro);
+            color: var(--color-blanco);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-cafe-crema);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+            border: 2px solid rgba(0,0,0,0.18);
+            overflow: visible;
+        }
+        .whatsapp-float a {
+            color: white;
+            font-size: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(0,0,0,0.45);
+        }
+
+        /* pulso sutil detrás del botón */
+        .whatsapp-float .pulse {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: rgba(37, 211, 102, 0.3);
+            animation: pulse 1.8s infinite;
+            z-index: -1;
+        }
+
+        /* Footer arreglado: estilos limpios y responsivos */
+        .site-footer {
+            background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(18,18,18,0.99));
+            color: var(--color-blanco);
+            border-top: var(--borde);
+            margin-top: 3.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 2rem 1rem;
+            align-items: start;
+        }
+
+        .footer-section .logo {
+            font-size: 1.4rem;
+            margin-bottom: 0.6rem;
+            transform: skew(-2deg);
+        }
+
+        .footer-desc {
+            color: #bfbfbf;
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-section h4 {
+            color: var(--color-cafe-crema);
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p, .footer-section a, .footer-section .hours {
+            color: #d0d0d0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-cafe-crema);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.4rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            color: var(--color-blanco);
+            transition: background 0.18s, color 0.18s, transform 0.12s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--color-cafe-crema);
+            color: var(--color-negro);
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp mini dentro del footer */
+        .whatsapp-mini-wrap { margin-top: 12px; }
+        .whatsapp-mini {
+            display: inline-flex;
+            gap: .6rem;
+            align-items: center;
+            padding: .5rem .8rem;
+            background: var(--color-cafe-crema);
+            color: var(--color-negro);
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform .15s ease, box-shadow .15s ease;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        .whatsapp-mini i { font-size: 1rem; }
+        .whatsapp-mini:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+
+        /* footer bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding: 1rem;
+            text-align: center;
+            color: #9a9a9a;
+            font-size: 0.92rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background-color: var(--color-negro);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+                border-top: var(--borde);
+                gap: 2rem;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .btn, .whatsapp-btn {
+                display: block;
+                margin: 1rem auto;
+                width: 250px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-inner { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+
+            .logo {
+                font-size: 1.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .benefits-grid, .classes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-inner { 
+                grid-template-columns: 1fr; 
+                gap: 1.2rem; 
+                padding: 1rem; 
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                transform: skew(-2deg);
+            }
+            
+            .footer-desc { 
+                max-width: 100%; 
+            }
+        }
+
+        /* Animación pulse para WhatsApp */
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+            70% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header actualizado -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">UNDER<span>BOARD</span></a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#clases">Clases</a></li>
+                    <li><a href="#inscripcion">Inscripción</a></li>
+                    <li><a href="index.html" class="tienda-btn">Tienda</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>CLASES DE SKATE EN SAN FELIPE</h1>
+            <p>Aprende skateboarding en un ambiente seguro con instructores certificados. Para todas las edades y niveles.</p>
+            <div>
+                <a href="#inscripcion" class="btn">Inscríbete</a>
+                <a href="#clases" class="btn">Ver Clases</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="benefits-container">
+            <h2 class="section-title">Beneficios del Skateboarding</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Salud Física</h3>
+                        <p>Mejora el equilibrio, coordinación, fuerza y resistencia cardiovascular. Tonifica piernas, glúteos y abdomen mientras quemas calorías.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Salud Mental</h3>
+                        <p>Reduce el estrés y la ansiedad, libera endorfinas y mejora la concentración. Desarrolla perseverancia y capacidad de superación.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Desarrollo Social</h3>
+                        <p>Fomenta la amistad, el trabajo en equipo y el respeto. Conecta con una comunidad diversa y apasionada por el deporte.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Confianza Personal</h3>
+                        <p>Cada truco aprendido aumenta la autoestima. Enseña a manejar el miedo y a celebrar los pequeños logros.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Conciencia Ambiental</h3>
+                        <p>Promueve el uso de espacios públicos y el transporte sostenible. Fomenta el respeto por los espacios urbanos.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="benefit-info">
+                        <h3>Desarrollo Integral</h3>
+                        <p>Combina actividad física, creatividad y disciplina. Perfecto para el desarrollo físico y emocional en todas las edades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="classes" id="clases">
+        <div class="classes-container">
+            <h2 class="section-title">Nuestras Clases</h2>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <div class="class-img">
+                        <img src="https://images.unsplash.com/photo-1571148880325-8db8e5e4d0f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Clase para niños">
+                    </div>
+                    <div class="class-info">
+                        <h3>Clases para Niños (6-12 años)</h3>
+                        <p>Introducción al skateboarding con énfasis en seguridad y diversión. Aprenden equilibrio, patinaje básico y primeros trucos.</p>
+                        <a href="#inscripcion" class="btn">Inscribir</a>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-img">
+                        <img src="https://images.unsplash.com/photo-1547447134-cd3f5c716030?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Clase para jóvenes">
+                    </div>
+                    <div class="class-info">
+                        <h3>Clases para Jóvenes (13-17 años)</h3>
+                        <p>Desarrollo de habilidades técnicas, trucos básicos a intermedios, y preparación para competencias locales.</p>
+                        <a href="#inscripcion" class="btn">Inscribir</a>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-img">
+                        <img src="https://images.unsplash.com/photo-1544625126-5e01f3bd0c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Clase para adultos">
+                    </div>
+                    <div class="class-info">
+                        <h3>Clases para Adultos (18+ años)</h3>
+                        <p>Para quienes quieren aprender skateboarding o retomarlo. Enfoque en técnica, condición física y disfrute del deporte.</p>
+                        <a href="#inscripcion" class="btn">Inscribir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration" id="inscripcion">
+        <div class="registration-container">
+            <h2 class="section-title">Inscríbete</h2>
+            <div class="registration-form">
+                <form id="whatsapp-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Edad</label>
+                        <input type="number" id="age" class="form-control" min="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="level">Nivel de Experiencia</label>
+                        <select id="level" class="form-control" required>
+                            <option value="">Selecciona tu nivel</option>
+                            <option value="Principiante">Principiante (Nunca he patinado)</option>
+                            <option value="Intermedio">Intermedio (Puedo patinar pero no hacer trucos)</option>
+                            <option value="Avanzado">Avanzado (Puedo hacer algunos trucos)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-type">Tipo de Clase Preferida</label>
+                        <select id="class-type" class="form-control" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="Niños (6-12 años)">Clase para Niños (6-12 años)</option>
+                            <option value="Jóvenes (13-17 años)">Clase para Jóvenes (13-17 años)</option>
+                            <option value="Adultos (18+ años)">Clase para Adultos (18+ años)</option>
+                            <option value="Sábados para todos">Sábados para Todos los Niveles</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-float">
+        <div class="pulse"></div>
+        <a href="https://wa.me/56993419216?text=Hola!%20Quisiera%20más%20información%20sobre%20las%20clases%20de%20skate%20en%20San%20Felipe" target="_blank" aria-label="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-section">
+                <a href="index.html" class="logo">UNDER<span>BOARD</span></a>
+                <p class="footer-desc">Clases de skate en San Felipe. Promoviendo deporte, salud y comunidad.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Skatepark Municipal, San Felipe</p>
+                <p><i class="fas fa-phone"></i> +56 9 9341 9216</p>
+                <div class="whatsapp-mini-wrap">
+                    <a href="https://wa.me/56993419216" class="whatsapp-mini" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Escríbenos
+                    </a>
+                </div>
+            </div>
+            
+
+            
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <p><a href="#inicio">Inicio</a></p>
+                <p><a href="#beneficios">Beneficios</a></p>
+                <p><a href="#clases">Clases</a></p>
+                <p><a href="#inscripcion">Inscripción</a></p>
+                <p><a href="index.html">Tienda</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 UnderBoard - Clases de Skateboarding San Felipe. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Form submission para WhatsApp
+        document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener valores del formulario
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const level = document.getElementById('level').value;
+            const classType = document.getElementById('class-type').value;
+            
+            // Crear mensaje para WhatsApp
+            const message = `Hola! Me interesa inscribirme en las clases de skate.%0A%0A` +
+                           `*Nombre:* ${name}%0A` +
+                           `*Email:* ${email}%0A` +
+                           `*Teléfono:* ${phone}%0A` +
+                           `*Edad:* ${age} años%0A` +
+                           `*Nivel:* ${level}%0A` +
+                           `*Clase preferida:* ${classType}%0A%0A` +
+                           `Por favor, envíenme más información.`;
+            
+            // Número de WhatsApp (reemplaza con tu número)
+            const whatsappNumber = '56993419216';
+            
+            // Crear URL de WhatsApp
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // Abrir WhatsApp en una nueva ventana
+            window.open(whatsappURL, '_blank');
+            
+            // Opcional: Resetear el formulario
+            this.reset();
+        });
+    </script>
+</body>
+</html>

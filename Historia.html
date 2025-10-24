@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underboard-Shop - Sobre Nosotros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-negro: #0a0a0a;
+            --color-blanco: #F2F2F2;
+            --color-cafe: #8B4513;
+            --color-cafe-crema: #E3C9A5;
+            --color-gris: #1A1A1A;
+            --color-gris-claro: #2A2A2A;
+            --borde: 1px solid #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Archivo', sans-serif;
+        }
+        
+        body {
+            background-color: var(--color-negro);
+            color: var(--color-blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header minimalista */
+        header {
+            background-color: var(--color-negro);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: var(--borde);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--color-blanco);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .logo span {
+            color: var(--color-cafe-crema);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--color-blanco);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-cafe-crema);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--color-blanco);
+        }
+        
+        /* Sección About Us con imagen de fondo difuminada */
+        .about-us {
+            padding: 6rem 1rem;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .about-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95)), url('https://images.unsplash.com/photo-1572777589367-4d4d7c836d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-content {
+            padding: 2rem;
+        }
+        
+        .about-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-cafe-crema);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-cafe-crema);
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .about-highlight {
+            color: var(--color-cafe-crema);
+            font-weight: 600;
+        }
+        
+        .milestones {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .milestone {
+            background-color: var(--color-gris);
+            padding: 1.5rem;
+            border-left: 4px solid var(--color-cafe-crema);
+            transition: transform 0.3s ease;
+        }
+        
+        .milestone:hover {
+            transform: translateY(-5px);
+        }
+        
+        .milestone-year {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-cafe-crema);
+            margin-bottom: 0.5rem;
+        }
+        
+        .milestone-text {
+            font-size: 1rem;
+            color: var(--color-blanco);
+        }
+        
+        .about-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border: 2px solid var(--color-cafe-crema);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .logo-story {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--color-gris);
+            border-top: 2px solid var(--color-cafe-crema);
+        }
+        
+        .logo-story p {
+            font-style: italic;
+            text-align: center;
+            color: #999;
+        }
+        
+        /* WhatsApp Button flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: var(--color-blanco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+            border: 2px solid var(--color-blanco);
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-negro);
+            color: var(--color-blanco);
+            padding: 6rem 1rem 3rem;
+            text-align: center;
+            border-top: var(--borde);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: var(--color-cafe-crema);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #999;
+            margin-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--color-cafe-crema);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-gris);
+            border-radius: 50%;
+            color: var(--color-blanco);
+            transition: all 0.3s;
+            font-size: 1.3rem;
+            border: 1px solid #333;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--color-cafe-crema);
+            color: var(--color-negro);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-title {
+                font-size: 3rem;
+            }
+            
+            .milestones {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background-color: var(--color-negro);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+                border-top: var(--borde);
+                gap: 2rem;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .about-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .about-text {
+                font-size: 1rem;
+            }
+            
+            .milestone-year {
+                font-size: 1.5rem;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">UNDER<span>BOARD</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="#" class="active">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="about-us">
+        <div class="about-bg"></div>
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="about-title">NUESTRA HISTORIA</h2>
+                <p class="about-text">
+                    Underboard-Shop nació en <span class="about-highlight">San Felipe</span> con una visión clara: ser más que una tienda de skate, ser un punto de encuentro para la comunidad rider. Con <span class="about-highlight">15 años de experiencia</span> en la venta de skates, oficializamos nuestro espacio físico en el <span class="about-highlight">2016</span>, comenzando con pequeñas cantidades de productos pero con la firme intención de crecer y mejorar la calidad constantemente.
+                </p>
+                
+                <p class="about-text">
+                    Nuestro primer año fue un desafío, especialmente al incursionar en el mundo del <span class="about-highlight">snowboard</span>, pero las ganas de seguir adelante y apoyar el skate local nunca flaquearon. Con el tiempo, tomamos la decisión de crear <span class="about-highlight">nuestra propia marca</span>, organizar talleres y apoyar eventos como el <span class="about-highlight">Sanfeskate</span>, siempre con el objetivo de poner a San Felipe en el mapa de los deportes de tabla.
+                </p>
+                
+                <div class="milestones">
+                    <div class="milestone">
+                        <div class="milestone-year">2016</div>
+                        <div class="milestone-text">Apertura oficial del local físico Underboard-Shop</div>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-year">2019</div>
+                        <div class="milestone-text">Primera edición del SickTrip, mostrando talento local</div>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-year">2024</div>
+                        <div class="milestone-text">Construcción de un nuevo espacio para la comunidad skate</div>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-year">15+</div>
+                        <div class="milestone-text">Años apoyando el skate y snowboard en San Felipe</div>
+                    </div>
+                </div>
+                
+                <p class="about-text">
+                    Hoy seguimos expandiendo nuestro apoyo al <span class="about-highlight">snowboard y outdoor</span>, siempre desde la humildad y las ganas que nos caracterizan. Nuestro logo, nacido de la mano de <span class="about-highlight">Álvaro Salinas</span>, reconocido ilustrador de San Felipe, representa esta identidad auténtica y arraigada a nuestra ciudad.
+                </p>
+                
+                <div class="logo-story">
+                    <p>"Nuestro logo representa la esencia de San Felipe: autenticidad, pasión y raíces profundas en la cultura del skate y snowboard."</p>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1547447138-67bc50e7eb65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Interior de Underboard-Shop">
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/56912345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Underboard-Shop</h3>
+                <p>Tu tienda de skate y snowboard en San Felipe. Más de 15 años apoyando el deporte local.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Principal 123, San Felipe</p>
+                <p><i class="fas fa-phone"></i> +56 9 1234 5678</p>
+                <p><i class="fas fa-envelope"></i> info@underboard-shop.cl</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2024 Underboard-Shop. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para el menú hamburguesa
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('nav ul');
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
